@@ -1,6 +1,6 @@
 ---
 name: designing-agents
-description: Use when defining a new agent's purpose, persona, tool constraints, or success criteria — before any implementation files are written
+description: Use when defining a new agent's purpose, persona, tool constraints, or success criteria before any implementation files are written
 ---
 
 # Designing Agents
@@ -8,6 +8,8 @@ description: Use when defining a new agent's purpose, persona, tool constraints,
 ## Overview
 
 An agent definition needs four elements before Creator touches a file: **scope**, **persona**, **tool constraints**, **success criteria**. Missing any one produces an agent that drifts under pressure.
+
+Use `agent-factory:designing-skills` instead when designing a skill's trigger conditions, output shape, bundled resources, or behavioral claims.
 
 ## Design Checklist
 
@@ -22,7 +24,7 @@ An agent definition needs four elements before Creator touches a file: **scope**
 - Decision-making style (ask vs act, conservative vs bold)
 
 **Tool constraints:**
-- List allowed tools explicitly — start restrictive, add only what's needed
+- List allowed tools explicitly - start restrictive, add only what's needed
 - State file-write permission clearly: read-only vs full access
 - One-line rationale for any non-obvious restriction
 
@@ -36,7 +38,7 @@ An agent definition needs four elements before Creator touches a file: **scope**
 ```markdown
 ---
 name: agent-name
-description: Use when [specific triggering conditions — not what it does]
+description: Use when [specific triggering conditions - not what it does]
 ---
 
 [Persona statement: 1-2 sentences, who this is and primary job]
@@ -45,7 +47,7 @@ description: Use when [specific triggering conditions — not what it does]
 
 **Your outputs:** [list of deliverables]
 
-**You MUST NOT:** [hard constraints — specific, not generic]
+**You MUST NOT:** [hard constraints - specific, not generic]
 ```
 
 ## Common Mistakes
@@ -57,3 +59,4 @@ description: Use when [specific triggering conditions — not what it does]
 | Missing "MUST NOT" constraints | Every agent needs explicit prohibitions or it will improvise |
 | Vague success criteria | Write it as Reviewer will test it: observable, falsifiable |
 | Description summarizes what the agent does | Description must say WHEN to dispatch it, not what it does |
+| Designing a skill with this checklist | Use `agent-factory:designing-skills` for skill trigger, output, resource, and behavior design |

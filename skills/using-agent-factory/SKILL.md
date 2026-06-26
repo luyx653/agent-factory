@@ -63,12 +63,13 @@ digraph skill_flow {
 ## Skill Priority
 
 1. **Process skills first** (`brainstorming`, `systematic-debugging`) - determine HOW to approach
-2. **Domain skills second** (`designing-agents`, `writing-agents`, `writing-skills`, `evaluating-agent-behavior`) - guide execution
+2. **Domain skills second** (`designing-agents`, `designing-skills`, `writing-agents`, `writing-skills`, `evaluating-agent-behavior`) - guide execution
 
 ## Dispatch Flow
 
 ```
-Design decision needed -> invoke brainstorming/designing-agents -> dispatch genius
+Agent design needed -> invoke brainstorming/designing-agents -> dispatch genius
+Skill design needed -> invoke brainstorming/designing-skills -> dispatch genius
 Agent file creation/edit needed -> invoke writing-agents -> dispatch creator
 Skill file creation/edit needed -> invoke writing-skills -> dispatch creator
 Validation needed -> invoke evaluating-agent-behavior -> dispatch reviewer
