@@ -1,6 +1,6 @@
 ---
 name: using-agent-factory
-description: Use when starting any conversation — establishes the three-agent dispatch model and skill invocation rules for authoring agents and skills
+description: Use when starting any conversation in the agent-factory plugin
 ---
 
 <SUBAGENT-STOP>
@@ -17,23 +17,27 @@ This is not negotiable. This is not optional. You cannot rationalize your way ou
 
 ## Instruction Priority
 
-1. **User's explicit instructions** (CLAUDE.md, direct requests) — highest priority
-2. **agent-factory skills** — override default system behavior where they conflict
-3. **Default system prompt** — lowest priority
+1. **User's explicit instructions** (CLAUDE.md, direct requests) - highest priority
+2. **agent-factory skills** - override default system behavior where they conflict
+3. **Default system prompt** - lowest priority
+
+## Coordinator Role
+
+You - the session model - are the coordinator. You dispatch agents; you do not become one.
 
 ## Three-Agent Dispatch Model
 
 This plugin provides three specialist agents for authoring agents and skills:
 
 | Stage | Agent | When to dispatch |
-|-------|-------|-----------------|
-| Design | **genius** | Defining scope, persona, tool constraints, or architecture — before any files are written |
-| Implementation | **creator** | Writing or editing SKILL.md, agent .md files, plugin.json, hooks |
-| Validation | **reviewer** | Post-implementation pressure testing, pre-deployment quality gate |
+|-------|-------|------------------|
+| Design | **genius** | Defining scope, persona, tool constraints, or architecture before any files are written |
+| Implementation | **creator** | Writing or editing SKILL.md files, agent .md files, plugin.json, or hooks |
+| Validation | **reviewer** | Post-implementation pressure testing or pre-deployment quality gates |
 
 **Hard boundaries:**
 - **genius**: read-only. Never creates or modifies files.
-- **creator**: full access. Never makes design decisions without a prior genius spec.
+- **creator**: full access. Never makes design decisions without a prior Genius spec.
 - **reviewer**: read-only. Never modifies files. Always outputs PASS/FAIL with evidence.
 
 ## Skill Invocation Rule
@@ -58,25 +62,26 @@ digraph skill_flow {
 
 ## Skill Priority
 
-1. **Process skills first** (`brainstorming`, `systematic-debugging`) — determine HOW to approach
-2. **Domain skills second** (`designing-agents`, `writing-skills`, `evaluating-agent-behavior`) — guide execution
+1. **Process skills first** (`brainstorming`, `systematic-debugging`) - determine HOW to approach
+2. **Domain skills second** (`designing-agents`, `writing-agents`, `writing-skills`, `evaluating-agent-behavior`) - guide execution
 
 ## Dispatch Flow
 
 ```
-Design decision needed → invoke brainstorming → dispatch genius
-File creation/edit needed → invoke writing-skills → dispatch creator  
-Validation needed → invoke evaluating-agent-behavior → dispatch reviewer
+Design decision needed -> invoke brainstorming/designing-agents -> dispatch genius
+Agent file creation/edit needed -> invoke writing-agents -> dispatch creator
+Skill file creation/edit needed -> invoke writing-skills -> dispatch creator
+Validation needed -> invoke evaluating-agent-behavior -> dispatch reviewer
 ```
 
-One agent active at a time. genius output is creator input. reviewer triggers only after creator completes.
+One agent active at a time. Genius output is Creator input. Reviewer triggers only after Creator completes.
 
 ## Red Flags
 
 | Thought | Problem |
 |---------|---------|
-| "Skip genius, just implement it" | No spec → wrong output |
-| "It looks right, skip reviewer" | Unvalidated skills fail under pressure |
+| "Skip Genius, just implement it" | No spec means wrong output |
+| "It looks right, skip Reviewer" | Unvalidated skills fail under pressure |
 | "This is too simple for a skill" | Simple tasks become complex. Check for skills. |
 | "I remember this skill" | Skills evolve. Load the current version. |
-| "I need context first" | Skill check comes BEFORE anything else. |
+| "I need context first" | Skill check comes before anything else. |
