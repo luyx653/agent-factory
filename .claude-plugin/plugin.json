@@ -1,0 +1,17 @@
+{
+  "name": "agent-factory",
+  "description": "Specialized toolkit for authoring agents, skills, and AI workflow definitions",
+  "version": "1.0.0",
+  "author": {
+    "name": "Yuxuan"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "skills",
+    "authoring",
+    "workflow",
+    "tdd",
+    "debugging"
+  ]
+}

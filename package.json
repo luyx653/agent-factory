@@ -1,0 +1,12 @@
+{
+  "name": "agent-factory",
+  "version": "1.0.0",
+  "description": "Specialized toolkit for authoring agents, skills, and AI workflow definitions",
+  "type": "module",
+  "keywords": [
+    "agents",
+    "skills",
+    "authoring",
+    "workflow"
+  ]
+}
