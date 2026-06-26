@@ -1,6 +1,6 @@
 ---
 name: designing-agents
-description: Use when defining a new agent's purpose, persona, tool constraints, or success criteria before any implementation files are written
+description: Use when defining or changing a agent's purpose, persona, tool constraints, or success criteria before any implementation files are written
 ---
 
 # Designing Agents
